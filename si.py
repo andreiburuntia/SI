@@ -15,8 +15,8 @@ GPIO.setup(led, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(redled, GPIO.OUT, initial=GPIO.LOW)
 
 # initializare email service
-gmail_user = 'emailsters@gmail.com'  
-gmail_password = 'parolastearsa' # am sters userul si parola
+gmail_user = 'aaa@gmail.com'  
+gmail_password = 'aaa' # am sters userul si parola
 
 sent_from = gmail_user  
 to = ['andreiburuntia@gmail.com']
@@ -47,8 +47,8 @@ def mail_it():
 		server.close()
 
 		print 'Email sent!'
-	except:  
-		print 'Something went wrong sending email...'
+	except Exception,e:  
+		print 'Something went wrong sending email...', str(e)
 
 # functie care verifica daca sunt prezent, folosind bluetooth signature
 def im_here():
@@ -63,7 +63,6 @@ def im_here():
 			continue
 	return False
 
-GPIO.output(led,GPIO.HIGH)
 # intr-o bucla infinita, se interogheaza pinul la care s-a conectat senzorul PIR
 while True:
 	time.sleep(0.1)
@@ -81,5 +80,4 @@ while True:
 			GPIO.output(redled,GPIO.LOW)
 
 # 'cleanup' sau unbind pentru pinii GPIO
-GPIO.output(led,GPIO.LOW)
 GPIO.cleanup()
