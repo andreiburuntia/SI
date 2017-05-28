@@ -63,6 +63,7 @@ def im_here():
 			continue
 	return False
 
+GPIO.output(led,GPIO.HIGH)
 # intr-o bucla infinita, se interogheaza pinul la care s-a conectat senzorul PIR
 while True:
 	time.sleep(0.1)
@@ -77,7 +78,8 @@ while True:
 			mail_it()
 			GPIO.output(redled,GPIO.HIGH)
 			time.sleep(1)
-			blink(led)
+			GPIO.output(redled,GPIO.LOW)
 
 # 'cleanup' sau unbind pentru pinii GPIO
+GPIO.output(led,GPIO.LOW)
 GPIO.cleanup()
